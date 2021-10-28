@@ -15,17 +15,23 @@ public class CourseListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("semesters", Semester.getAllSemesterText());
         getServletContext().getRequestDispatcher("/CourseList.jsp").forward(request,response);
-
+        //setAttribute (java.lang.String name, java.lang.Object o) attributeที่ได้ตั้งชื่อไว้จะใช้ในjsp
+        //request.setAttribute()เพื่อเพิ่มข้อมูลพิเศษและส่งต่อ forward/ เปลี่ยนเส้นทางคำขอปัจจุบันไปยังทรัพยากรอื่น
+        // Sequence การทำงานจะเป็น Browser(request) -> Server(request) -> Server(response)
+        //Request Dispatcher ฝั่ง Server จะรับหน้าที่ติดต่อปลายทางให้เอง
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         Map<String, String[]> parameterMap = request.getParameterMap();request.setCharacterEncoding("UTF-8");
-        if (parameterMap.get("semester") == null) {doGet(request, response);return;}
+        if (parameterMap.get("semester") == null)
+            {doGet(request, response);
+                return;}
         int semester = Integer.valueOf(parameterMap.get("semester")[0]);
-        request.setAttribute("semesters", Semester.getAllSemesterText());
-        request.setAttribute("selectedSemester", semester);
-        request.setAttribute("subjects", CourseRepository.getSubjects(semester));
+        request.setAttribute("semesters", Semester.getAllSemesterText());//variable1>>array,control in Course-list
+        request.setAttribute("selectedSemester", semester);//variable2>>ตัวแปรเดี่ยว,control in Course-list
+        request.setAttribute("subjects", CourseRepository.getSubjects(semester));//variable3>>เป็นList
         getServletContext().getRequestDispatcher("/CourseList.jsp").forward(request, response);
     }
 }

@@ -1,0 +1,54 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Hello:war exploded">
+    <output-path>$PROJECT_DIR$/target/Hello-1.0-SNAPSHOT</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>Hello</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Hello" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.20" />
+          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
+          <element id="library" level="project" name="Maven: org.mortbay.jetty:jetty-jspc-maven-plugin:8.1.16.v20140903" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-util:8.1.16.v20140903" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-project:2.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-settings:2.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-profile:2.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-model:2.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-artifact-manager:2.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-repository-metadata:2.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.maven.wagon:wagon-provider-api:1.0-alpha-6" />
+          <element id="library" level="project" name="Maven: org.codehaus.plexus:plexus-utils:1.1" />
+          <element id="library" level="project" name="Maven: org.codehaus.plexus:plexus-container-default:1.0-alpha-9" />
+          <element id="library" level="project" name="Maven: junit:junit:3.8.1" />
+          <element id="library" level="project" name="Maven: classworlds:classworlds:1.1-alpha-2" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-plugin-api:2.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-artifact:2.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-plugin-tools-api:2.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.maven:maven-plugin-descriptor:2.0.3" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-jsp:8.1.16.v20140903" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty.orbit:javax.servlet.jsp:2.2.0.v201112011158" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty.orbit:javax.servlet:3.0.0.v201112011016" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty.orbit:org.apache.jasper.glassfish:2.2.2.v201112011158" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty.orbit:javax.servlet.jsp.jstl:1.2.0.v201105211821" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty.orbit:org.apache.taglibs.standard.glassfish:1.2.0.v201112081803" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty.orbit:javax.el:2.2.0.v201108011116" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty.orbit:com.sun.el:2.2.0.v201108011116" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty.orbit:org.eclipse.jdt.core:3.7.1" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/Hello-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="Hello/web/Web" />
+    </root>
+  </artifact>
+</component>

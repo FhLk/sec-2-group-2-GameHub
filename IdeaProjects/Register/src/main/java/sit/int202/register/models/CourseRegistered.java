@@ -34,5 +34,7 @@ public class CourseRegistered {
     public List<Subject> getRegisteredCourse(int semester) {
         return registeredSubjects.get(semester);
     }
-
+    public Map<Integer, List<Subject>> getHistory() {
+        return this.registeredSubjects ;
+    }
 }

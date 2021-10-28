@@ -37,6 +37,7 @@ public class CourseRepository {
     public static void init() {
         Scanner sc = null;
         sc = new Scanner(CourseRepository.class.getClassLoader().getResourceAsStream("data.txt"), "utf-8");
+        //อ่านไฟล์จากdata.txt แบบscanner
         //List<String[]> subjectList = new ArrayList(50);
         String dataLine[] = null;
         while (sc.hasNextLine()) {

@@ -9,6 +9,7 @@
 <div style="padding: 10px;display: block;width: 50%;margin: auto">
     <h3>Menu</h3><br>
     <a href="course-list"> 1)ลงทะเบียน</a> <br>
+    <a href="course-registered-history"> 2)ประวัติการลงทะเบียน</a> <br>
 </div>
 
 </body>

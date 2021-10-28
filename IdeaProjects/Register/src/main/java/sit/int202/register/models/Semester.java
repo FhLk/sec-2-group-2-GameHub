@@ -14,14 +14,14 @@ import java.util.List;
  */
 public class Semester {
     private static final String[] TITLE = {null, "ภาค 1/ ปีการศึกษาที่ 1", "ภาค 2/ ปีการศึกษาที่ 1", "ภาค 1/ ปีการศึกษาที่ 2"
-    , "ภาค 2/ ปีการศึกษาที่ 2", "ภาค 1/ ปีการศึกษาที่ 3", "ภาค 2/ ปีการศึกษาที่ 3", "ภาค 1/ ปีการศึกษาที่ 4"
-    , "ภาค 2/ ปีการศึกษาที่ 4", "ภาคพิเศษ โครงการ WIL"};
+            , "ภาค 2/ ปีการศึกษาที่ 2", "ภาค 1/ ปีการศึกษาที่ 3", "ภาค 2/ ปีการศึกษาที่ 3", "ภาค 1/ ปีการศึกษาที่ 4"
+            , "ภาค 2/ ปีการศึกษาที่ 4", "ภาคพิเศษ โครงการ WIL"};
 
     public static String[] getAllSemesterText() {
         return TITLE;
     }
 
-     public static String getSemesterText(int semesterNumber) {
+    public static String getSemesterText(int semesterNumber) {
         if(semesterNumber>=TITLE.length) {
             return null;
         }
