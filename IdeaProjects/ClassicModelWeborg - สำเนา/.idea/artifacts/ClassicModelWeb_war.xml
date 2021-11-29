@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ClassicModelWeb:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>ClassicModelWeb</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="ClassicModelWeb-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ClassicModelWeb:war exploded" />
+    </root>
+  </artifact>
+</component>

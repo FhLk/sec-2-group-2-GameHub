@@ -6,8 +6,11 @@
             <div class="img-fluid img-thumbnail" title="${p.productDescription}">
                 <img src="model-images/${p.productLine.id}/${p.id}.jpg" height="120" width="180"/>
             </div>
-            <div>${p.productName} <span class="text-right">${p.msrp}</span></div>
-        </div>
+            <div>
+                    ${p.productName} <span class="text-right">${p.msrp}</span></div>
+            <span style="color: darkred;margin-left: 2px;cursor: pointer">
+            <i class="bi bi-bag-plus" onclick="addToCart('${p.id}')"></i></span>
+         </div>
     </c:forEach>
 </div>
 <hr>
