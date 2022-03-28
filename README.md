@@ -1,1 +1,1 @@
-# sec-2-group-3-GameHub
+# sec-2-group-2-GameHub
