@@ -13,11 +13,10 @@ const props=defineProps({
     require:true
   },
   turn:{
-    type:Number,
+    type: Number,
     require:true
   }
 })
-
 
 const sumOfplayer = computed(() => {
   return props.cardOfplayer.reduce((p, c) => { return p + c }, 0)
@@ -27,20 +26,20 @@ const sumOfplayer = computed(() => {
  
 <template>
  <div>
-        <div class="button-choose-player-div">
+        <div class="button-choose-player-div" v-show="turn===0">
           <button
-            v-show="turn == 0 && sumOfplayer < 21"
+            v-show="sumOfplayer < 21"
             @click="$emit('drawn',sumOfplayer)"
             class="button-choose-player-drawn"
           >DRAW</button>
           <button
-            v-show="turn == 0 && sumOfplayer >= 21"
+            v-show="sumOfplayer >= 21"
             class="button-choose-player-drawn-disable"
             :disabled="sumOfplayer >= 21"
           >DRAW</button>
-          <button  v-show="turn == 0" class="button-choose-player-item">ITEM</button>
-          <button  v-show="turn == 0" class="button-choose-player-money">INCREASE</button>
-          <button v-show="turn == 0" @click="$emit('stay',sumOfplayer)" class="button-choose-player-stay">STAY</button>
+          <button class="button-choose-player-item">ITEM</button>
+          <button class="button-choose-player-money">INCREASE</button>
+          <button @click="$emit('stay',sumOfplayer)" class="button-choose-player-stay">STAY</button>
         </div>
         <p class="player-score">
           <a style="color: #EDE682;">{{ player.name }} ($10,000)</a>

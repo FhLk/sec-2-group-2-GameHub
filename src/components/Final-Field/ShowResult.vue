@@ -10,7 +10,11 @@ const props = defineProps({
   bot:{
     type:Object,
     require:true
-  }
+  },
+  sum:{
+      type:Object,
+      require:true
+    }
 })
 
 </script>
@@ -31,6 +35,11 @@ const props = defineProps({
             Round {{ index + 1 }} : {{ result }}
             <span v-if="result == 'Win'">+1</span>
             <span v-else>+0</span>
+          </li>
+          <br>
+          Score Board
+          <li v-for="(result, index) in sum.player" :key="index">
+            {{player.name.charAt(0)}} | {{sum.player[index]}} : {{sum.bot[index]}} | {{bot.name.charAt(0)}}
           </li>
         </ul>
 </div>

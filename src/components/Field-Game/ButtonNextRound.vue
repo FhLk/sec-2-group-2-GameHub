@@ -15,10 +15,6 @@ const props=defineProps({
   bot:{
     type: Object,
     require: true 
-  },
-  turn:{
-    type: Number,
-    require:true
   }
 })
 
@@ -68,18 +64,18 @@ const nextRound = () => {
     props.player.round.push("Draw")
     props.bot.round.push("Draw")
   }
-  return
+  return [props.sum.player,props.sum.bot]
 }
 
 </script>
  
 <template>
 <div>
-     <div class="winnerRound" v-show="turn == 2">
+     <div class="winnerRound">
         {{ winRound(sum.player, sum.bot) }}
         <br />
     </div>
-    <button @click="$emit('nextround',nextRound())" v-show="turn == 2" class="button-next">Next Round</button>
+    <button @click="$emit('nextround',nextRound())" class="button-next">Next Round</button>
 </div>
 
 </template>

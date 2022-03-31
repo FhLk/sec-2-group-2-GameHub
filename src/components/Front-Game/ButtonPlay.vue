@@ -1,17 +1,11 @@
 <script setup>
 defineEmits(['play'])
-const props=defineProps({
-    isPlay:{
-        type: Number,
-        require: true
-    },
-})
 </script>
  
 <template>
 <div>
 <div class="playbuttondiv">
-    <h1 class="header" v-show="isPlay === 0">BlackJack Game</h1>
+    <h1 class="header">BlackJack Game</h1>
     <button @click="$emit('play')" class="playbutton">Play</button>
 </div>
 </div>

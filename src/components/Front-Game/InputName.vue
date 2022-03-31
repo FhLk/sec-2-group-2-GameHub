@@ -14,7 +14,7 @@ const props=defineProps({
 </script>
  
 <template>
- <div class="field-name" v-show="isPlay == 1">
+ <div class="field-name">
         <div class="field-topic">
           <h1>WELCOME TO BLACKJACK GAMES !</h1>
         </div>

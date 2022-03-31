@@ -138,7 +138,11 @@ function BotStop() {
   }, 6000)
 }
 //when click start new round
-const nextRound = () => {
+const oldsumofplayer=ref([]);
+const oldsumofbot=ref([])
+const nextRound = (s) => {
+  oldsumofplayer.value.push(s[0])
+  oldsumofbot.value.push(s[1])
   round.value++
   card.value = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   cardOfplayer.value = []
@@ -192,20 +196,16 @@ const restartGame = (defaultValue) => {
 <template>
   <div class="body">
     <div class="beforegame" v-show="isPlay !== 2">
-    <ButtonPlay 
-    :isPlay="isPlay" 
-    @play="play" v-show="isPlay===0"/>
-      <InputName 
-      :player="player" 
-      :isPlay="isPlay" 
-      @go="go" v-show="isPlay===1"/>
+    <ButtonPlay @play="play" v-show="isPlay===0"/>
+      <InputName :player="player" :isPlay="isPlay" @go="go" v-show="isPlay===1"/>
     </div>
     <div class="gameplay" v-show="isPlay == 2">
       <RuleGame/>
       <div class="field-game" v-show="GameField">
         <ButtonHistory 
         :player="player" 
-        :bot="bot"/>
+        :bot="bot"
+        :sum="{player:oldsumofplayer,bot:oldsumofbot}"/>
         <p class="score-board">
           Score Board
           <br />
@@ -224,11 +224,11 @@ const restartGame = (defaultValue) => {
             <span :style="sumOfbot < 18 ? red : ''">DRAW</span> :
             <span :style="sumOfbot < 18 ? '' : red">STAY</span>
           </p>
-          <p :style="centerStyle" v-if="turn == 0">
+          <p :style="centerStyle" v-if="turn === 0">
             Turn Of
             <a style="color: #EDE682;">{{ player.name }} ($500)</a>
           </p>
-          <p :style="centerStyle" v-else-if="turn == 1">
+          <p :style="centerStyle" v-else-if="turn === 1">
             Turn Of
             <a style="color: #EA99D5;">{{ bot.name }} ($600)</a>
           </p>
@@ -236,21 +236,22 @@ const restartGame = (defaultValue) => {
             <ButtonNextRound :sum="{player:sumOfplayer,bot:sumOfbot}"
             :player="player" 
             :bot="bot" 
-            :turn="turn"
-            @nextround="nextRound"/>
+            @nextround="nextRound"
+            v-show="turn === 2"/>
           </div>
         </div>
         <Player 
         :player="player" 
-        :cardOfplayer="cardOfplayer" 
+        :cardOfplayer="cardOfplayer"
         :turn="turn"
         @drawn="PlayerDrawn" 
         @stay="PlayerStop" />
       </div>
     </div>
-    <div class="beforegame" v-show="GameField == false">
+    <div class="beforegame" v-show="GameField === false">
       <div class="final-field">
-        <ShowResult :player="player" :bot="bot"/>
+        <ShowResult :player="player" :bot="bot"
+        :sum="{player:oldsumofplayer,bot:oldsumofbot}"/>
         <div class="winnerGame">THE WINNER IS {{ winGame(player.score, bot.score) }} !!!!!!</div>
         <ButtunFinalField @restartgame="restartGame"/>
       </div>
@@ -283,7 +284,7 @@ const restartGame = (defaultValue) => {
   padding-bottom: 11.75rem;
 }
 .winnerGame {
-  font-size: 60px;
+  font-size: 50px;
   font-weight: 700;
   text-align: center;
   padding-top: 3%;

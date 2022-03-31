@@ -9,9 +9,13 @@ const props=defineProps({
     bot:{
       type:Object,
       require:true
+    },
+    sum:{
+      type:Object,
+      require:true
     }
-
 })
+
 
 const HistoryButton = ref(false);
 const PopUpHistory = () => {
@@ -47,6 +51,7 @@ const PopUpHistory = () => {
                   <a style="color: red;">+1</a>
                 </span>
                 <span v-else>+0</span>
+                | {{sum.player[index]}} : {{sum.bot[index]}}
               </li>
               <br />
               <a style="color: #008E89;">{{ bot.name }}</a>
@@ -56,6 +61,7 @@ const PopUpHistory = () => {
                   <a style="color: red;">+1</a>
                 </span>
                 <span v-else>+0</span>
+                | {{sum.player[index]}} : {{sum.bot[index]}}
               </li>
             </ul>
           </div>
