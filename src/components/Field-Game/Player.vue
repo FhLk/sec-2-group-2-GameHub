@@ -1,7 +1,9 @@
 <script setup>
 import { computed, reactive, ref } from 'vue';
+import ButtonItem from './ButtonItem.vue';
+import ButtonMoney from './ButtonMoney.vue';
 
-defineEmits(['drawn','stay'])
+defineEmits(['drawn','stay','item'])
 
 const props=defineProps({
   cardOfplayer:{
@@ -17,10 +19,24 @@ const props=defineProps({
     require:true
   }
 })
+const popup=ref();
+const items=ref([])
+const textCard=ref("")
 
 const sumOfplayer = computed(() => {
   return props.cardOfplayer.reduce((p, c) => { return p + c }, 0)
 });
+
+const PopUpItem=()=>{
+  popup.value= popup.value ? false:true
+}
+
+const randomItem =()=>{
+    return Math.floor(Math.random() * 12)+1;
+}
+
+items.value.push(randomItem());
+items.value.push(randomItem());
 
 </script>
  
@@ -37,8 +53,26 @@ const sumOfplayer = computed(() => {
             class="button-choose-player-drawn-disable"
             :disabled="sumOfplayer >= 21"
           >DRAW</button>
-          <button class="button-choose-player-item">ITEM</button>
-          <button class="button-choose-player-money">INCREASE</button>
+          <!-- <ButtonItem :cardOfplayer="cardOfplayer" :card="card"/> -->
+          <button class="button-choose-player-item"
+            @click="PopUpItem"
+          >ITEM</button>
+          <div class="item" v-show="popup">
+            <div class="item-header">
+              <div class="item-title">ITEM</div>
+                <button class="close-item" @click="popup=false">&times;</button>
+              </div>
+              <p class="msg" :style="{color:'red'}">{{textCard}}</p>
+            <ul class="item-list">
+                <div class="card-card-div">
+              <div v-for="(item,index) in items" :key="index" class="card-card">
+              <p class="text-test" @click="use(item)">{{item}}</p>
+              </div>
+              </div>
+            </ul>
+          </div>    
+          <ButtonMoney/>
+          <!-- <button class="button-choose-player-money">INCREASE</button> -->
           <button @click="$emit('stay',sumOfplayer)" class="button-choose-player-stay">STAY</button>
         </div>
         <p class="player-score">
@@ -55,6 +89,65 @@ const sumOfplayer = computed(() => {
 </template>
  
 <style scoped>
+
+.item-header .item-title {
+  font-size: 35px;
+  font-weight: bold;
+  padding-left: 1%;
+}
+
+.item-header .close-item {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.item-header .close-item:hover {
+  color: red;
+}
+
+.msg{
+    position: fixed;
+    left: 31.5%;
+    top: 5%;
+}
+
+.item-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+.text-test{
+    margin-right: 28%;
+    margin-top: 23%;
+}
+.item {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  width: 30%;
+  max-width: 80%;
+  height: 25%;
+  color: black;
+  border: black 2px solid;
+  box-shadow: 5px 5px 10px 2px rgba(36, 36, 36, 0.507);
+}
+
+.item-list {
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    padding: 0%;
+}
+
 
 .button-choose-player-item{
   width: 120px;
@@ -74,26 +167,6 @@ const sumOfplayer = computed(() => {
   border: #033326 5px solid;
   color: white;
 }
-.button-choose-player-money{
-  width: 125px;
-  height: 60px;
-  font-weight: 700;
-  font-size: 20px;
-  background-color: white;
-  color: #11856d;
-  border: white 5px solid;
-  border-radius: 5px;
-  box-shadow: 5px 5px 10px 2px rgba(36, 36, 36, 0.507);
-  margin-left: 10%;
-}
-
-.button-choose-player-money:hover {
-  background-color: #033326;
-  border: #033326 5px solid;
-  color: white;
-}
-
-
 .card-card-div {
   display: flex;
   justify-content: space-evenly;

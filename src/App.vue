@@ -245,7 +245,8 @@ const restartGame = (defaultValue) => {
         :cardOfplayer="cardOfplayer"
         :turn="turn"
         @drawn="PlayerDrawn" 
-        @stay="PlayerStop" />
+        @stay="PlayerStop"
+        @item="" />
       </div>
     </div>
     <div class="beforegame" v-show="GameField === false">
