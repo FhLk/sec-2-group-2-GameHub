@@ -100,7 +100,7 @@
 
 <template>
 <div class="body">
-  <h1>Maching Game</h1>
+  <h1>Matching Game</h1>
   <div class="game-board">
     <Card v-for="(card,index) in cardList" 
     :key="index" 
