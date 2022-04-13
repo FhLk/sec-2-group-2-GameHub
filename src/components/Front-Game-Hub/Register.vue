@@ -20,18 +20,19 @@ const register = async () => {
       email: email.value,
       score: {
         blackjack: 0,
-        cardgame: 0,
+        matching: 0,
       },
     }),
   })
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
+             window.location.href="/";
     });
 };
 
 const checkIsOnline = () => {
-    if (sessionStorage.getItem("userId") !== null) {
+    if (localStorage.getItem("userId") !== null) {
        window.location.href="/";
     }
 }
@@ -43,7 +44,6 @@ checkIsOnline();
     <div class="register-div">
       <h1 class="register-text">Register GameHub</h1>
       <div>
-        <form>
           <div class="crop-text-text-field">
             <div class="text-text-field">
               <div class="text-field">
@@ -67,7 +67,6 @@ checkIsOnline();
           <div class="register-button-div">
             <button class="register-button" @click="register">Register</button>
           </div>
-        </form>
       </div>
     </div>
   </div>

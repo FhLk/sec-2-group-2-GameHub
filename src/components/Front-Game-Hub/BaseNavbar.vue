@@ -1,11 +1,12 @@
 <script setup>
 import GameLogo from "../../assets/gamecontroller.png";
 import Profile from "../../assets/profile.png";
+import Leaderboard from "/images/leaderBoard.png";
 import { ref } from "vue";
 const isLogin = ref(false);
 
 const checkLogin = () => {
-  if (sessionStorage.getItem("userId") == null) {
+  if (localStorage.getItem("userId") == null) {
     isLogin.value = false;
   } else {
     isLogin.value = true;
@@ -13,9 +14,9 @@ const checkLogin = () => {
 };
 
 const logout = () => {
-  sessionStorage.removeItem("userDisplay");
-  sessionStorage.removeItem("userId");
-  sessionStorage.removeItem("user");
+  localStorage.removeItem("userDisplay");
+  localStorage.removeItem("userId");
+  localStorage.removeItem("user");
   window.location.href = '/';
 }
 checkLogin();
@@ -31,6 +32,9 @@ checkLogin();
         <!-- <input type="search" class="search" placeholder="Search Games" /> -->
       </div>
       <div class="nav-right">
+              <router-link to="/leaderboard">
+          <img :src="Leaderboard" alt="" class="profile nav-right-item"  />
+        </router-link>
         <router-link to="/register">
           <button
             class="register-button nav-right-item"
@@ -44,9 +48,11 @@ checkLogin();
             Login
           </button>
         </router-link>
+
         <router-link to="/profile">
           <img :src="Profile" alt="" class="profile nav-right-item" v-if="isLogin == true" />
         </router-link>
+
         <!-- ทำให้ logout ได้ (clear session) -->
         <button class="register-button nav-right-item" v-if="isLogin == true" @click="logout">
           Logout

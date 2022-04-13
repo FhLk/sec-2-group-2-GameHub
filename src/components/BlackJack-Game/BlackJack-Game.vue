@@ -17,7 +17,12 @@ const card = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
 function randomCard(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
-
+const checkLogin = () => {
+    if(localStorage.getItem("user") == null){
+      window.location.href = "/#/login"
+    }
+}
+checkLogin()
 const randomItem =()=>{
     return Math.floor(Math.random() * 12)+1;
 }
@@ -159,9 +164,46 @@ const play = () => {
 const go = (playerName) => {
   (playerName == '' ? alert("Please enter your name !") : play())
 }
+const dataFetch = ref({})
+const userId = ref(0);
+const getProfile = async () => {
+  userId.value = localStorage.getItem("userId")
+  await fetch(`http://localhost:9000/profile/${userId.value}`, {
+    method: "GET",
+  }).then((res) => res.json()).then(data => {
+      dataFetch.value = data;
+    });
+};
+const increaseScore = async () => {
+  await dataFetch.value.score.blackjack++
+  await fetchUpdateScore()
+}
+const fetchUpdateScore = async () => {
+  await fetch(`http://localhost:9000/profile/${userId.value}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      displayname: dataFetch.value.displayname,
+      user: dataFetch.value.user,
+      password: dataFetch.value.password,
+      email: dataFetch.value.email,
+      score: dataFetch.value.score,
+    }),
+  })
+    .then((resdata) => resdata.json())
+    .then((data) => (dataFetch.value = data))
+};
+
+const getProfileAndIncreaseScore = async () => {
+  await getProfile();
+  await increaseScore();
+}
 const winGame = (scoreplayer, scorebot) => {
   if (scoreplayer === 2) {
     GameField.value = false
+    getProfileAndIncreaseScore();
     return player.name
   }
   else if (scorebot === 2) {

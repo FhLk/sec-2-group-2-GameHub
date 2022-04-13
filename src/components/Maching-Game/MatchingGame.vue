@@ -5,8 +5,51 @@ import Card from "./Card.vue"
 const cardList = ref([])
 const playerSelect = ref([])
 const newPlayer = ref(true)
+const dataFetch = ref({})
+const userId = ref(0);
+const getProfile = async () => {
+  userId.value = localStorage.getItem("userId")
+  await fetch(`http://localhost:9000/profile/${userId.value}`, {
+    method: "GET",
+  }).then((res) => res.json()).then(data => {
+      dataFetch.value = data;
+    });
+};
+const checkLogin = () => {
+    if(localStorage.getItem("user") == null){
+      window.location.href = "/#/login"
+    }
+}
+checkLogin()
+const increaseScore = async () => {
+  await dataFetch.value.score.matching++
+  await fetchUpdateScore()
+}
+const fetchUpdateScore = async () => {
+  await fetch(`http://localhost:9000/profile/${userId.value}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      displayname: dataFetch.value.displayname,
+      user: dataFetch.value.user,
+      password: dataFetch.value.password,
+      email: dataFetch.value.email,
+      score: dataFetch.value.score,
+    }),
+  })
+    .then((resdata) => resdata.json())
+    .then((data) => (dataFetch.value = data))
+};
+
+const getProfileAndIncreaseScore = async () => {
+  await getProfile();
+  await increaseScore();
+}
 const status = computed(() => {
   if (remaining.value === 0) {
+    getProfileAndIncreaseScore()
     return "YOU ARE WIN!!!"
   } else {
     return `Remaining Pairs: ${remaining.value}`
@@ -133,7 +176,7 @@ const checkMatch = () => {
 <template>
 <div id="app">
   <div class="body">
-    <h1>Wizard Matching</h1>
+    <h1 class="title">Wizard Matching</h1>
     <transition-group tag="div" class="game-board" name="shuffle-card">
       <Card
         v-for="card in cardList"
@@ -223,5 +266,8 @@ h1 {
 
 .shuffle-card-move{
   transition: transform 0.8s ease-in;
+}
+.title{
+  text-align:center;
 }
 </style>

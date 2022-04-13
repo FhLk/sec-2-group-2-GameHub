@@ -24,8 +24,8 @@ const fetchEditUser = async () => {
   })
     .then((resdata) => resdata.json())
     .then((data) => (dataFetch.value = data))
-    .then(sessionStorage.getItem("userDisplay", dataFetch.value.displayname))
-    .then(sessionStorage.getItem("user", dataFetch.value.user));
+    .then(localStorage.getItem("userDisplay", dataFetch.value.displayname))
+    .then(localStorage.getItem("user", dataFetch.value.user));
   clickEdit();
   window.location.href = "/";
 };
@@ -34,15 +34,15 @@ const fetchDeleteUser = async () => {
     method: "DELETE",
   })
     .then((resdata) => resdata.json())
-    .then(sessionStorage.removeItem("userDisplay"))
-    .then(sessionStorage.removeItem("user"))
-    .then(sessionStorage.removeItem("userId"));
+    .then(localStorage.removeItem("userDisplay"))
+    .then(localStorage.removeItem("user"))
+    .then(localStorage.removeItem("userId"));
   clickDelete();
   window.location.href = "/";
 };
 const getUser = async () => {
-  if (sessionStorage.getItem("userId") != null) {
-    userId.value = sessionStorage.getItem("userId");
+  if (localStorage.getItem("userId") != null) {
+    userId.value = localStorage.getItem("userId");
     await fetchUser();
     console.log(dataFetch.value);
   }

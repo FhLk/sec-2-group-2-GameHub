@@ -1,10 +1,12 @@
 <script setup>
 import BlackjackImg from "../../assets/blackjack.jpg";
+import MacthingImg from "/images/matchingGame.png";
+
 import GamePick from './Game.vue'
 
 const greetUser = () => {
-    if(sessionStorage.getItem("userId") != null){
-        return "Welcome back, " + sessionStorage.getItem("userDisplay");
+    if(localStorage.getItem("userId") != null){
+        return "Welcome back, " + localStorage.getItem("userDisplay");
     } else {
         return "Welcome to GameHub!";
     }
@@ -17,7 +19,7 @@ const greetUser = () => {
     <h3 class="pick-game">{{ greetUser() }}</h3>
     <div class="select-game">
         <GamePick gameName="Blackjack" :imgLink="BlackjackImg" linkTo="/blackjack"/>
-        <GamePick gameName="Matching" :imgLink="BlackjackImg" linkTo="/matching"/>
+        <GamePick gameName="Matching" :imgLink="MacthingImg" linkTo="/matching"/>
       <!-- <img :src="BlackjackImg" alt="" class="game"/> -->
     </div>
   </div>

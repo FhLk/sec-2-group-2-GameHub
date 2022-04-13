@@ -16,7 +16,7 @@ const getProfile = () => {
 };
 getProfile();
 const checkIsOnline = () => {
-    if (sessionStorage.getItem("userId") !== null) {
+    if (localStorage.getItem("userId") !== null) {
        window.location.href="/";
     }
 }
@@ -26,9 +26,9 @@ const login = () => {
   dataFetch.forEach((element) => {
     if (element.user == username.value && element.password == password.value) {
       getIdOfUser = element.id;
-      sessionStorage.setItem("userId", getIdOfUser);
-      sessionStorage.setItem("user", element.user);
-      sessionStorage.setItem("userDisplay", element.displayname);
+      localStorage.setItem("userId", getIdOfUser);
+      localStorage.setItem("user", element.user);
+      localStorage.setItem("userDisplay", element.displayname);
       console.log("You are logged in.");
       window.location.href = "/";
     }
@@ -52,6 +52,11 @@ const login = () => {
               <input type="password" class="text-box" v-model="password" />
             </div>
           </div>
+          
+        </div>
+        
+        <div class="center">
+        <p>Not our user? <router-link to="/#/register"> just register </router-link> </p>
         </div>
         <div class="register-button-div">
           <button class="register-button" @click="login">Login</button>
@@ -101,5 +106,8 @@ const login = () => {
 }
 .register-div {
   padding-top: 2rem;
+}
+.center {
+  text-align: center;
 }
 </style>
