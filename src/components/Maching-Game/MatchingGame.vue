@@ -131,6 +131,7 @@ const checkMatch = () => {
 </script>
 
 <template>
+<div id="app">
   <div class="body">
     <h1>Wizard Matching</h1>
     <transition-group tag="div" class="game-board" name="shuffle-card">
@@ -156,9 +157,10 @@ const checkMatch = () => {
       Restart Game
     </button>
   </div>
+</div>
 </template>
 
-<style>
+<style scoped>
 @font-face{
   font-family: HarryFont;
   src: url("/fonts/Sarun's HarryPotter.TTF");
