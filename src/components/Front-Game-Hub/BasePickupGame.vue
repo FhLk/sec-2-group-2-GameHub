@@ -1,5 +1,5 @@
 <script setup>
-import BlackjackImg from "../assets/blackjack.jpg";
+import BlackjackImg from "../../assets/blackjack.jpg";
 import GamePick from './Game.vue'
 
 const greetUser = () => {

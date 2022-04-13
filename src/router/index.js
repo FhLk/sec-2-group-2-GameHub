@@ -2,10 +2,10 @@
 // These can be imported from other files
 import {createRouter, createWebHashHistory} from 'vue-router'
 import AppHome from '../App.vue'
-import PickupGame from '../components/BasePickupGame.vue'
-import Register from '../components/Register.vue'
-import Login from '../components/Login.vue'
-import Profile from '../components/Profile.vue'
+import PickupGame from '../components/Front-Game-Hub/BasePickupGame.vue'
+import Register from '../components/Front-Game-Hub/Register.vue'
+import Login from '../components/Front-Game-Hub/Login.vue'
+import Profile from '../components/Front-Game-Hub/Profile.vue'
 
 // 2. Define some routes
 // Each route should map to a component.
