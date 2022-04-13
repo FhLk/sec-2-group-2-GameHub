@@ -1,6 +1,6 @@
 <script setup>import { ref } from 'vue';
 
-const RuleButton =ref(true)
+const RuleButton =ref(false)
 
 const closeRule = () => {
   RuleButton.value = false;

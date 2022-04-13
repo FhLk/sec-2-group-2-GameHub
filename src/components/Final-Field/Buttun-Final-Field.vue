@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import Player from '../Field-Game/Player.vue';
 
 defineEmits(['restartgame'])
 

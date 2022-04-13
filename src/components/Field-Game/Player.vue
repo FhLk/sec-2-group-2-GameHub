@@ -1,9 +1,8 @@
 <script setup>
 import { computed, reactive, ref } from 'vue';
-import ButtonItem from './ButtonItem.vue';
-import ButtonMoney from './ButtonMoney.vue';
+import ButtunFinalField from '../Final-Field/Buttun-Final-Field.vue';
 
-defineEmits(['drawn','stay','item'])
+defineEmits(['drawn','stay','item','bet'])
 
 const props=defineProps({
   cardOfplayer:{
@@ -17,10 +16,24 @@ const props=defineProps({
   turn:{
     type: Number,
     require:true
+  },
+  items:{
+    type: Array,
+    require:true
   }
 })
+
+const player=computed(()=>{
+  return props.player
+})
+const turn=computed(()=>{
+  return props.turn
+})
+
 const popup=ref();
-const items=ref([])
+const items=computed(()=>{
+  return props.items
+})
 const textCard=ref("")
 
 const sumOfplayer = computed(() => {
@@ -31,31 +44,23 @@ const PopUpItem=()=>{
   popup.value= popup.value ? false:true
 }
 
-const randomItem =()=>{
-    return Math.floor(Math.random() * 12)+1;
-}
-
-items.value.push(randomItem());
-items.value.push(randomItem());
-
+const use =(c)=>{
+  items.value.splice(items.value.indexOf(c),1)
+  PopUpItem();
+  return c;
+} 
 </script>
  
 <template>
- <div>
+ <div >
         <div class="button-choose-player-div" v-show="turn===0">
-          <button
-            v-show="sumOfplayer < 21"
-            @click="$emit('drawn',sumOfplayer)"
-            class="button-choose-player-drawn"
+          <button v-show="sumOfplayer < 21" @click="$emit('drawn',sumOfplayer),isBet=false" class="button-choose-player-drawn"
           >DRAW</button>
-          <button
-            v-show="sumOfplayer >= 21"
-            class="button-choose-player-drawn-disable"
-            :disabled="sumOfplayer >= 21"
+          <button v-show="sumOfplayer >= 21" class="button-choose-player-drawn-disable" :disabled="sumOfplayer >= 21"
           >DRAW</button>
-          <!-- <ButtonItem :cardOfplayer="cardOfplayer" :card="card"/> -->
-          <button class="button-choose-player-item"
-            @click="PopUpItem"
+          <button v-show="items.length>0" class="button-choose-player-item" @click="PopUpItem"
+          >ITEM</button>
+          <button v-show="items.length===0" class="button-choose-player-item-disable" :disabled="items.length===0"
           >ITEM</button>
           <div class="item" v-show="popup">
             <div class="item-header">
@@ -66,17 +71,15 @@ items.value.push(randomItem());
             <ul class="item-list">
                 <div class="card-card-div">
               <div v-for="(item,index) in items" :key="index" class="card-card">
-              <p class="text-test" @click="use(item)">{{item}}</p>
+              <p class="text-test" @click="$emit('item',use(item))">{{item}}</p>
               </div>
               </div>
             </ul>
-          </div>    
-          <ButtonMoney/>
-          <!-- <button class="button-choose-player-money">INCREASE</button> -->
-          <button @click="$emit('stay',sumOfplayer)" class="button-choose-player-stay">STAY</button>
+          </div>
+          <button @click="$emit('stay',sumOfplayer),isBet=false" class="button-choose-player-stay">STAY</button>
         </div>
         <p class="player-score">
-          <a style="color: #EDE682;">{{ player.name }} ($10,000)</a>
+          <a style="color: #EDE682;">{{ player.name }}</a>
           : {{ sumOfplayer }}
         </p>
         <div class="card-card-div">
@@ -89,6 +92,25 @@ items.value.push(randomItem());
 </template>
  
 <style scoped>
+
+.button-choose-player-money{  
+  width: 120px;
+  height: 55px;
+  font-weight: 700;
+  font-size: 20px;
+  background-color: white;
+  color: #11856d;
+  border: white 5px solid;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 2px rgba(36, 36, 36, 0.507);
+  margin-left: 10%;
+}
+
+.button-choose-player-money:hover {
+  background-color: #033326;
+  border: #033326 5px solid;
+  color: white;
+}
 
 .item-header .item-title {
   font-size: 35px;
@@ -210,6 +232,30 @@ items.value.push(randomItem());
   border: #74807d 5px solid;
   border-radius: 5px;
   box-shadow: 5px 5px 10px 2px rgba(36, 36, 36, 0.507);
+}
+.button-choose-player-item-disable {
+  width: 120px;
+  height: 55px;
+  font-weight: 700;
+  font-size: 20px;
+  background-color: #74807d;
+  color: white;
+  border: #74807d 5px solid;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 2px rgba(36, 36, 36, 0.507);
+  margin-left: 10%;
+}
+.button-choose-player-money-disable {
+  width: 120px;
+  height: 55px;
+  font-weight: 700;
+  font-size: 20px;
+  background-color: #74807d;
+  color: white;
+  border: #74807d 5px solid;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 2px rgba(36, 36, 36, 0.507);
+  margin-left: 10%;
 }
 
 .button-choose-player-stay {

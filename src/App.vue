@@ -18,9 +18,17 @@ function randomCard(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+const randomItem =()=>{
+    return Math.floor(Math.random() * 12)+1;
+}
+
+//Item
+const itemOfPlayer=ref([])
+const itemOfBot=ref([])
+
 //Oject of Player
-const player = reactive({ name: '', score: 0, round: [] })
-const bot = reactive({ name: 'Computer', score: 0, round: [] })
+const player = reactive({ name: '', score: 0, round: []})
+const bot = reactive({ name: 'Computer', score: 0, round: []})
 //Card of Player
 const cardOfplayer = ref([])
 //Card of Bot 
@@ -61,6 +69,9 @@ function Start() {
   secondofPlayer = randomCard(card.value)
   cardOfplayer.value.push(secondofPlayer)
   card.value.splice(card.value.indexOf(secondofPlayer), 1)
+
+  itemOfPlayer.value= Item();
+  itemOfBot.value= Item();
 }
 //Game play of player
 //when player clink Drawn
@@ -89,7 +100,6 @@ const PlayerStop = (sum) => {
 }
 //Game play of Bot
 function Bot() {
-  isChoose.value = true;//assigned 'isChoose' use for show tag html
   //Check condition
   if (sumOfbot.value < 18) {// if Calculator card of bot less than 18
     BotDrawn();//Bot Choose Drawn
@@ -102,36 +112,21 @@ function Bot() {
 }
 //if Bot choose Drawn
 function BotDrawn() {
-  //tell to player that bot choose this 
-  setTimeout(() => {
-    red.value = 'color:red'//change font-color to red
-  }, 2000)
   //seem player clink drawn crad
   setTimeout(() => {
     if (card.value.length != 0) {
       let num = randomCard(card.value);
       cardOfbotShow.value.push(num)
-      //make card of bot use for calculator = card of bot use for show, trim index 0 of card of bot use for show
       cardOfbotCal.value = [firstofBot.value, ...cardOfbotShow.value.slice(1)];
       card.value.splice(card.value.indexOf(num), 1)
       turn.value = 0;
-      isChoose.value = false;
-      red.value = ''
     }
   }, 3000)
 }
-//if Bot choose Stop
+
 function BotStop() {
-  //tell to player that bot choose this 
   setTimeout(() => {
-    red.value = 'color:red'
-  }, 3000)
-  //seem player click Stop
-  setTimeout(() => {
-    red.value = ''
     turn.value = 0;
-    isChoose.value = false;
-    //if player click stop and bot choose stop
     if (isBotStop.value == isPlayerStop.value) {
       turn.value = 2;//change to turn of result
     }
@@ -165,11 +160,11 @@ const go = (playerName) => {
   (playerName == '' ? alert("Please enter your name !") : play())
 }
 const winGame = (scoreplayer, scorebot) => {
-  if (scoreplayer == 2) {
+  if (scoreplayer === 2) {
     GameField.value = false
     return player.name
   }
-  else if (scorebot == 2) {
+  else if (scorebot === 2) {
     GameField.value = false
     return bot.name
   }
@@ -190,6 +185,38 @@ const restartGame = (defaultValue) => {
   round.value = defaultValue.round
   Start()
 }
+
+const textUse=ref("")
+const isUse=ref(false)
+
+const UseItem=(c)=>{
+  isUse.value=true
+  textUse.value=`Player Use ITEM`
+  setTimeout(()=>{
+    if(card.value.includes(c)){
+      card.value.splice(card.value.indexOf(c), 1)
+      cardOfplayer.value.push(c);
+      isUse.value=false
+      textUse.value=""
+    }
+    else{
+      textUse.value=`Not Have ${c} in Original Card`
+      setTimeout(()=>{textUse.value=""},2000)
+    }
+  },3000)
+}
+
+const Item=()=>{
+  return [
+randomItem(),
+randomItem(),
+randomItem(),
+randomItem(),
+randomItem(),
+randomItem()
+  ]
+}
+
 
 </script>
 
@@ -218,19 +245,23 @@ const restartGame = (defaultValue) => {
         <Com :cardOfbot=
         "{Show:cardOfbotShow,
         Cal:cardOfbotCal,
-        FirstCard:firstofBot}" :bot="bot" :turn="turn"/>
+        FirstCard:firstofBot}" 
+        :bot="bot" 
+        :turn="turn"
+        :items="itemOfBot"/>
         <div class="center">
-          <p v-show="isChoose" class="text-choose">
+          <!-- <p v-show="isChoose" class="text-choose">
             <span :style="sumOfbot < 18 ? red : ''">DRAW</span> :
             <span :style="sumOfbot < 18 ? '' : red">STAY</span>
-          </p>
+          </p> -->
           <p :style="centerStyle" v-if="turn === 0">
             Turn Of
-            <a style="color: #EDE682;">{{ player.name }} ($500)</a>
+            <a style="color: #EDE682;">{{ player.name }}</a><br>
+            <span v-show="isUse" style="color: red;">{{textUse}}</span>
           </p>
           <p :style="centerStyle" v-else-if="turn === 1">
             Turn Of
-            <a style="color: #EA99D5;">{{ bot.name }} ($600)</a>
+            <a style="color: #EA99D5;">{{ bot.name }}</a>
           </p>
           <div v-else>
             <ButtonNextRound :sum="{player:sumOfplayer,bot:sumOfbot}"
@@ -244,9 +275,10 @@ const restartGame = (defaultValue) => {
         :player="player" 
         :cardOfplayer="cardOfplayer"
         :turn="turn"
+        :items="itemOfPlayer"
         @drawn="PlayerDrawn" 
         @stay="PlayerStop"
-        @item="" />
+        @item="UseItem"/>
       </div>
     </div>
     <div class="beforegame" v-show="GameField === false">
@@ -309,7 +341,6 @@ const restartGame = (defaultValue) => {
 }
 .center {
   text-align: center;
-  padding-top: 20px;
 }
 
 .text-choose {
