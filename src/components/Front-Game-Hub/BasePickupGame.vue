@@ -17,7 +17,7 @@ const greetUser = () => {
     <h3 class="pick-game">{{ greetUser() }}</h3>
     <div class="select-game">
         <GamePick gameName="Blackjack" :imgLink="BlackjackImg" linkTo="/blackjack"/>
-        <GamePick gameName="Blackjack" :imgLink="BlackjackImg" linkTo="/blackjack"/>
+        <GamePick gameName="Matching" :imgLink="BlackjackImg" linkTo="/matchingGame"/>
 
 
       <!-- <img :src="BlackjackImg" alt="" class="game"/> -->
