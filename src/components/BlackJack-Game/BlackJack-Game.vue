@@ -10,7 +10,7 @@ import ButtonNextRound from './Field-Game/ButtonNextRound.vue';
 import ShowResult from './Final-Field/ShowResult.vue';
 import ButtunFinalField from './Final-Field/Buttun-Final-Field.vue';
 
-const centerStyle = "font-size: 25px; margin-top: 2%; font-weight: 600"
+const centerStyle = "font-size: 25px;margin-top: 2%; font-weight: 600"
 //Original Card
 const card = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
 //function randomCard
@@ -321,9 +321,10 @@ randomItem()
     </div>
     <div class="beforegame" v-show="GameField === false">
       <div class="final-field">
+        <div class="winnerGame">THE WINNER IS {{ winGame(player.score, bot.score) }} !!!</div>
         <ShowResult :player="player" :bot="bot"
         :sum="{player:oldsumofplayer,bot:oldsumofbot}"/>
-        <div class="winnerGame">THE WINNER IS {{ winGame(player.score, bot.score) }} !!!!!!</div>
+        
         <ButtunFinalField @restartgame="restartGame"/>
       </div>
     </div>
@@ -379,10 +380,6 @@ randomItem()
 }
 .center {
   text-align: center;
-  margin-top: 3%;
-}
-
-.text-choose {
-  font-size: 30px;
+  margin-top: 4%;
 }
 </style>

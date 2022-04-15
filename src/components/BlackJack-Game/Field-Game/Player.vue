@@ -69,7 +69,7 @@ const use =(c)=>{
               <p class="msg" :style="{color:'red'}">{{textCard}}</p>
             <ul class="item-list">
                 <div class="card-card-div">
-              <div v-for="(item,index) in items" :key="index" class="card-card">
+              <div v-for="(item,index) in items" :key="index" class="card-card-item">
               <p class="text-test" @click="$emit('item',use(item))">{{item}}</p>
               </div>
               </div>
@@ -124,8 +124,8 @@ const use =(c)=>{
   border-bottom: 1px solid black;
 }
 .text-test{
-    margin-right: 28%;
-    margin-top: 23%;
+    margin-right: 10%;
+    margin-top: 20%;
 }
 .item {
   position: fixed;
@@ -161,6 +161,7 @@ const use =(c)=>{
   border-radius: 5px;
   box-shadow: 5px 5px 10px 2px rgba(36, 36, 36, 0.507);
   margin-left: 10%;
+  /* margin-top: 10%; */
 }
 
 .button-choose-player-item:hover {
@@ -224,18 +225,6 @@ const use =(c)=>{
   box-shadow: 5px 5px 10px 2px rgba(36, 36, 36, 0.507);
   margin-left: 10%;
 }
-.button-choose-player-money-disable {
-  width: 120px;
-  height: 55px;
-  font-weight: 700;
-  font-size: 20px;
-  background-color: #74807d;
-  color: white;
-  border: #74807d 5px solid;
-  border-radius: 5px;
-  box-shadow: 5px 5px 10px 2px rgba(36, 36, 36, 0.507);
-  margin-left: 10%;
-}
 
 .button-choose-player-stay {
   margin-left: 10%;
@@ -266,5 +255,23 @@ const use =(c)=>{
   background-image: url("images/bg-card.jpg");
   background-size: cover;
   box-shadow: 5px 5px 10px 2px rgba(36, 36, 36, 0.507);
+}
+.card-card-item {
+  font-size: 25px;
+  font-family: "Gill Sans MT";
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  border: 2px solid;
+  border-radius: 10px;
+  background-image: url("images/item.png");
+  background-size: cover;
+  box-shadow: 5px 5px 10px 2px rgba(36, 36, 36, 0.507);
+}
+
+.card-card-item:hover{
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
 }
 </style>

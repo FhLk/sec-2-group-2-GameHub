@@ -90,23 +90,24 @@ function BotStop() {
             <p class="card-card-text">{{ card }}</p>
           </div>
         </div>
-        <div class="center" v-show="turn===1 ? Bot(): false">
-          <p v-show="isChoose" class="text-choose">
+        <div class="com-center" v-show="turn===1 ? Bot(): false">
             <span :style="sumOfbot < 18 ? red : ''">DRAW</span> :
             <span :style="sumOfbot < 18 ? '' : red">STAY</span> 
-          </p>
         </div>
 </div>
 </template>
  
 <style scoped>
 
-.text-choose {
-  font-size: 30px;
+.button-choose-player-div {
+  display: flex;
+  justify-content: center;
 }
-.center {
+
+.com-center {
   text-align: center;
-  margin-top: 5%;
+  font-size: 30px;
+  margin-top: 4%;
 }
 .player-score {
   font-size: 30px;

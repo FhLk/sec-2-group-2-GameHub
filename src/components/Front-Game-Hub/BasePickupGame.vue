@@ -1,5 +1,5 @@
 <script setup>
-import BlackjackImg from "../../assets/blackjack.jpg";
+import BlackjackImg from "/images/blackjack.jpg";
 import MacthingImg from "/images/matchingGame.png";
 
 import GamePick from './Game.vue'

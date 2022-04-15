@@ -1,6 +1,6 @@
 <script setup>
-import GameLogo from "../../assets/gamecontroller.png";
-import Profile from "../../assets/profile.png";
+import GameLogo from "/images/gamecontroller.png";
+import Profile from "/images/profile.png";
 import Leaderboard from "/images/leaderBoard.png";
 import { ref } from "vue";
 const isLogin = ref(false);
