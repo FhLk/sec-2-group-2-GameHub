@@ -209,9 +209,10 @@ const checkMatch = () => {
   src: url("/fonts/Sarun's HarryPotter.TTF");
 }
 #app {
-  height: 94.6vh;
+  height: 94vh;
   background-image: linear-gradient(rgba(9, 9, 9, 0.8), rgba(9, 9, 9, 0.8)), url("/images/background-3.jpg");
   padding-top: 50px;
+  margin: -8px;
 }
 html,
 body {
@@ -220,7 +221,7 @@ body {
   padding: 0;
   text-align: center;
   /* margin-top: 50px; */
-  padding-top: 0;
+  position: absolute;
   height: 100vh;
 }
 h1 {
@@ -232,6 +233,8 @@ h1 {
 .status{
    font-family: HarryFont;
    font-size: 35px;
+   color: white;
+   text-align: center;
 }
 .button{
   background-color:#552969;

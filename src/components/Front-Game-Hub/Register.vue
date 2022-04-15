@@ -76,6 +76,7 @@ checkIsOnline();
 .body {
   background-color: #f1f1f1;
   padding-bottom: 25vh;
+  font-family: 'Poppins', sans-serif;
 }
 .text-field {
   display: flex;
@@ -102,6 +103,9 @@ checkIsOnline();
   width: 100px;
   height: 60px;
   border: 2px solid white;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
 }
 .register-button-div {
   margin-top: 2rem;
