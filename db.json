@@ -5,10 +5,6 @@
       "user": "FhLk",
       "password": "abc",
       "email": "aaa@hotmail.com",
-      "score": {
-        "blackjack": 7,
-        "matching": 0
-      },
       "id": 1
     },
     {

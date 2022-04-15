@@ -43,9 +43,6 @@ const items=computed(()=>{
 
 function Bot() {
   isChoose.value = true;
-  if(isUse()){
-    BotUse();
-  }
   if (sumOfbot.value < 18) {
     BotDrawn();
   }
@@ -53,16 +50,6 @@ function Bot() {
     BotStop();
   }
   return true
-}
-
-function BotUse(){
-    setTimeout(() => {
-    red.value = 'color:red'
-  }, 2000)
-  setTimeout(() => {
-      isChoose.value = false;
-      red.value = ''
-  }, 3000)
 }
 
 function BotDrawn() {
@@ -78,21 +65,11 @@ function BotDrawn() {
 function BotStop() {
   setTimeout(() => {
     red.value = 'color:red'
-  }, 3000)
+  }, 2000)
   setTimeout(() => {
     red.value = ''
     isChoose.value = false;
-  }, 6000)
-}
-
-const useItem=ref([true,false])
-
-const isUse = ()=>{
-  return randomBoolean(useItem)
-}
-
-function randomBoolean(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+  }, 3000)
 }
 </script>
  
@@ -116,7 +93,6 @@ function randomBoolean(arr) {
         <div class="center" v-show="turn===1 ? Bot(): false">
           <p v-show="isChoose" class="text-choose">
             <span :style="sumOfbot < 18 ? red : ''">DRAW</span> :
-            <span :style="isUse ? red: '' ">ITEM</span> :
             <span :style="sumOfbot < 18 ? '' : red">STAY</span> 
           </p>
         </div>
@@ -130,7 +106,7 @@ function randomBoolean(arr) {
 }
 .center {
   text-align: center;
-  padding-top: 20px;
+  margin-top: 5%;
 }
 .player-score {
   font-size: 30px;

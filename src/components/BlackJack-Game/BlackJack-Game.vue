@@ -135,7 +135,7 @@ function BotStop() {
     if (isBotStop.value == isPlayerStop.value) {
       turn.value = 2;//change to turn of result
     }
-  }, 6000)
+  }, 3000)
 }
 //when click start new round
 const oldsumofplayer=ref([]);
@@ -292,10 +292,6 @@ randomItem()
         :turn="turn"
         :items="itemOfBot"/>
         <div class="center">
-          <!-- <p v-show="isChoose" class="text-choose">
-            <span :style="sumOfbot < 18 ? red : ''">DRAW</span> :
-            <span :style="sumOfbot < 18 ? '' : red">STAY</span>
-          </p> -->
           <p :style="centerStyle" v-if="turn === 0">
             Turn Of
             <a style="color: #EDE682;">{{ player.name }}</a><br>
@@ -383,6 +379,7 @@ randomItem()
 }
 .center {
   text-align: center;
+  margin-top: 3%;
 }
 
 .text-choose {

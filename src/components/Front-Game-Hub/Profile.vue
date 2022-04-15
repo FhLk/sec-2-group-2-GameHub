@@ -20,6 +20,10 @@ const fetchEditUser = async () => {
       user: dataFetch.value.user,
       password: dataFetch.value.password,
       email: dataFetch.value.email,
+      score: {
+        blackjack: dataFetch.value.score.blackjack,
+        matching: dataFetch.value.score.matching,
+      },
     }),
   })
     .then((resdata) => resdata.json())

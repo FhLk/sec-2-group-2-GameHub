@@ -91,26 +91,6 @@ const use =(c)=>{
 </template>
  
 <style scoped>
-
-.button-choose-player-money{  
-  width: 120px;
-  height: 55px;
-  font-weight: 700;
-  font-size: 20px;
-  background-color: white;
-  color: #11856d;
-  border: white 5px solid;
-  border-radius: 5px;
-  box-shadow: 5px 5px 10px 2px rgba(36, 36, 36, 0.507);
-  margin-left: 10%;
-}
-
-.button-choose-player-money:hover {
-  background-color: #033326;
-  border: #033326 5px solid;
-  color: white;
-}
-
 .item-header .item-title {
   font-size: 35px;
   font-weight: bold;
@@ -258,7 +238,7 @@ const use =(c)=>{
 }
 
 .button-choose-player-stay {
-  margin-left: 100px;
+  margin-left: 10%;
   width: 120px;
   height: 55px;
   font-weight: 700;
