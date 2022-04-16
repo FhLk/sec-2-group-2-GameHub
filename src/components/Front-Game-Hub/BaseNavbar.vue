@@ -1,11 +1,12 @@
 <script setup>
-import GameLogo from "../assets/gamecontroller.png";
-import Profile from "../assets/profile.png";
+import GameLogo from "/images/gamecontroller.png";
+import Profile from "/images/profile.png";
+import Leaderboard from "/images/leaderBoard.png";
 import { ref } from "vue";
 const isLogin = ref(false);
 
 const checkLogin = () => {
-  if (sessionStorage.getItem("userId") == null) {
+  if (localStorage.getItem("userId") == null) {
     isLogin.value = false;
   } else {
     isLogin.value = true;
@@ -13,9 +14,9 @@ const checkLogin = () => {
 };
 
 const logout = () => {
-  sessionStorage.removeItem("userDisplay");
-  sessionStorage.removeItem("userId");
-  sessionStorage.removeItem("user");
+  localStorage.removeItem("userDisplay");
+  localStorage.removeItem("userId");
+  localStorage.removeItem("user");
   window.location.href = '/';
 }
 checkLogin();
@@ -31,6 +32,9 @@ checkLogin();
         <!-- <input type="search" class="search" placeholder="Search Games" /> -->
       </div>
       <div class="nav-right">
+              <router-link to="/leaderboard">
+          <img :src="Leaderboard" alt="" class="profile nav-right-item" id="trophy"  />
+        </router-link>
         <router-link to="/register">
           <button
             class="register-button nav-right-item"
@@ -44,9 +48,11 @@ checkLogin();
             Login
           </button>
         </router-link>
+
         <router-link to="/profile">
           <img :src="Profile" alt="" class="profile nav-right-item" v-if="isLogin == true" />
         </router-link>
+
         <!-- ทำให้ logout ได้ (clear session) -->
         <button class="register-button nav-right-item" v-if="isLogin == true" @click="logout">
           Logout
@@ -57,6 +63,7 @@ checkLogin();
 </template>
  
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .nav {
   display: flex;
   justify-content: space-between;
@@ -82,12 +89,17 @@ checkLogin();
   justify-content: center;
   align-items: center;
 }
+
 .register-button {
   background-color: #b51010;
   color: #f3f3f3;
   width: 75px;
   height: 40px;
   border: 2px solid white;
+  font-family: 'Poppins', sans-serif;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
 }
 .login-button {
   background-color: #f3f3f3;
@@ -95,6 +107,9 @@ checkLogin();
   width: 75px;
   height: 40px;
   border: 1px solid white;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
 }
 .search {
   width: 300px;
@@ -102,5 +117,9 @@ checkLogin();
 }
 .nav-right-item {
   margin-right: 30px;
+}
+#trophy{
+  height: 60px;
+  width: 60px;
 }
 </style>

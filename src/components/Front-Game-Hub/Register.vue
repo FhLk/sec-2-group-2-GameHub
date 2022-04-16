@@ -4,7 +4,6 @@ const displayname = ref("");
 const user = ref("");
 const password = ref("");
 const email = ref("");
-
 // register by using fetch
 const register = async () => {
   await fetch("http://localhost:9000/profile", {
@@ -20,18 +19,19 @@ const register = async () => {
       email: email.value,
       score: {
         blackjack: 0,
-        cardgame: 0,
+        matching: 0,
       },
     }),
   })
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
+      window.location.href="/";
     });
 };
 
 const checkIsOnline = () => {
-    if (sessionStorage.getItem("userId") !== null) {
+    if (localStorage.getItem("userId") !== null) {
        window.location.href="/";
     }
 }
@@ -43,8 +43,8 @@ checkIsOnline();
     <div class="register-div">
       <h1 class="register-text">Register GameHub</h1>
       <div>
-        <form>
           <div class="crop-text-text-field">
+                    <p style="text-align:center; color:red;">{{ errorMessage }}</p>
             <div class="text-text-field">
               <div class="text-field">
                 <h3>Display Name</h3>
@@ -67,7 +67,6 @@ checkIsOnline();
           <div class="register-button-div">
             <button class="register-button" @click="register">Register</button>
           </div>
-        </form>
       </div>
     </div>
   </div>
@@ -77,6 +76,7 @@ checkIsOnline();
 .body {
   background-color: #f1f1f1;
   padding-bottom: 25vh;
+  font-family: 'Poppins', sans-serif;
 }
 .text-field {
   display: flex;
@@ -103,6 +103,9 @@ checkIsOnline();
   width: 100px;
   height: 60px;
   border: 2px solid white;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
 }
 .register-button-div {
   margin-top: 2rem;

@@ -4,7 +4,7 @@ const username = ref("");
 const password = ref("");
 let dataFetch = [];
 let getIdOfUser = 0;
-
+const errorMessage = ref("")
 const getProfile = () => {
   fetch("http://localhost:9000/profile", {
     method: "GET",
@@ -16,7 +16,7 @@ const getProfile = () => {
 };
 getProfile();
 const checkIsOnline = () => {
-    if (sessionStorage.getItem("userId") !== null) {
+    if (localStorage.getItem("userId") !== null) {
        window.location.href="/";
     }
 }
@@ -26,11 +26,14 @@ const login = () => {
   dataFetch.forEach((element) => {
     if (element.user == username.value && element.password == password.value) {
       getIdOfUser = element.id;
-      sessionStorage.setItem("userId", getIdOfUser);
-      sessionStorage.setItem("user", element.user);
-      sessionStorage.setItem("userDisplay", element.displayname);
+      localStorage.setItem("userId", getIdOfUser);
+      localStorage.setItem("user", element.user);
+      localStorage.setItem("userDisplay", element.displayname);
       console.log("You are logged in.");
       window.location.href = "/";
+    }
+    else{
+      errorMessage.value = "User or Password is incorrect"
     }
   });
 };
@@ -41,6 +44,7 @@ const login = () => {
     <div class="register-div">
       <h1 class="register-text">Login GameHub</h1>
       <div>
+        <p style="text-align:center; color:red;">{{ errorMessage }}</p>
         <div class="crop-text-text-field">
           <div class="text-text-field">
             <div class="text-field">
@@ -52,6 +56,11 @@ const login = () => {
               <input type="password" class="text-box" v-model="password" />
             </div>
           </div>
+          
+        </div>
+        
+        <div class="center">
+        <p>Not our user? <router-link to="/#/register"> just register </router-link> </p>
         </div>
         <div class="register-button-div">
           <button class="register-button" @click="login">Login</button>
@@ -65,6 +74,7 @@ const login = () => {
 .body {
   background-color: #f1f1f1;
   padding-bottom: 40vh;
+  font-family: 'Poppins', sans-serif;
 }
 .text-field {
   display: flex;
@@ -90,7 +100,10 @@ const login = () => {
   color: #f3f3f3;
   width: 100px;
   height: 60px;
-  border: 2px solid white;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
 }
 .register-button-div {
   margin-top: 2rem;
@@ -101,5 +114,8 @@ const login = () => {
 }
 .register-div {
   padding-top: 2rem;
+}
+.center {
+  text-align: center;
 }
 </style>

@@ -20,12 +20,16 @@ const fetchEditUser = async () => {
       user: dataFetch.value.user,
       password: dataFetch.value.password,
       email: dataFetch.value.email,
+      score: {
+        blackjack: dataFetch.value.score.blackjack,
+        matching: dataFetch.value.score.matching,
+      }
     }),
   })
     .then((resdata) => resdata.json())
     .then((data) => (dataFetch.value = data))
-    .then(sessionStorage.getItem("userDisplay", dataFetch.value.displayname))
-    .then(sessionStorage.getItem("user", dataFetch.value.user));
+    .then(localStorage.getItem("userDisplay", dataFetch.value.displayname))
+    .then(localStorage.getItem("user", dataFetch.value.user));
   clickEdit();
   window.location.href = "/";
 };
@@ -34,15 +38,15 @@ const fetchDeleteUser = async () => {
     method: "DELETE",
   })
     .then((resdata) => resdata.json())
-    .then(sessionStorage.removeItem("userDisplay"))
-    .then(sessionStorage.removeItem("user"))
-    .then(sessionStorage.removeItem("userId"));
+    .then(localStorage.removeItem("userDisplay"))
+    .then(localStorage.removeItem("user"))
+    .then(localStorage.removeItem("userId"));
   clickDelete();
   window.location.href = "/";
 };
 const getUser = async () => {
-  if (sessionStorage.getItem("userId") != null) {
-    userId.value = sessionStorage.getItem("userId");
+  if (localStorage.getItem("userId") != null) {
+    userId.value = localStorage.getItem("userId");
     await fetchUser();
     console.log(dataFetch.value);
   }
@@ -173,6 +177,7 @@ getUser();
 .body {
   background-color: #f1f1f1;
   padding-bottom: 25vh;
+  font-family: 'Poppins', sans-serif;
 }
 .text-field {
   display: flex;
@@ -199,6 +204,8 @@ getUser();
   width: 100px;
   height: 60px;
   border: 2px solid white;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
 }
 .register-button-div {
   margin-top: 2rem;
