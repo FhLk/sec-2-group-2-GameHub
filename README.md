@@ -27,41 +27,42 @@ npm run dev
 ```
 npm run backend
 ```
+## Component :computer:
 
-## Rule :bookmark:
-1.There are 12 single numbered cards, and each card has only one number (1-12).
+## 1.FontGameHub
+#### Navbar
+-gamelogo , on the left of navbar, showing the game Logo that router to gamehub.
 
-2.Add the numbers on the cards you get to get as close to 21 as possible, whoever is closest wins. The conditions for losing and winning are as follows:
+-leaderboard , on the second of navbar, showing the 3 best  result score board.
 
-  -If player has value > Bot player wins.
+-register , on the third of navbar, showing register icon for user do not have account.
 
-  -If the player has < value, the bot player loses.
+-login,on the rigth of navbar,showing login icon for  user have account.
 
-  -If player always = Bot
+when login success
 
-  -If the value of both sides > 21, it is always considered.
+-register will change to profile user ,on the third of navbar, showing the profile user and  can edit , delete user.
 
-3.In 1 Game, there will be n Rounds and in 1 Round there will be a maximum of 8 Turns (depending on the player's decision).
+-login  will change to logout icon,on the rigth of navbar,showing logout for user.
 
-  - In 1 Round
-    
-    -Win = 1 point
-        
-     -Lose and Draw = 0 points
-     
-     
-## How to play :video_game:
-1.Players must add the values of the cards they get together to equal or close to 21 as much as possible.
+#### Body
+Game,show all game
 
-2.You can choose Draw to draw more cards or Stay to not draw cards.
+-blackjack
 
-3.If any player is equal to or closest to 21 will be the winner.
+-Wizard Matching
 
-4.In the event that any side has a value greater than 21, the right to win immediately.
-
-5.But if both pair is greater than 21, it is considered a draw.
+## 2.BlackJackGame
 
 
+## 3.MatchingGame
+#### navbar
+-gamelogo on the left of navbar, showing the game Logo that router to gamehub.
+-leaderboard , on the second of navbar, showing the 3 best  result score board.
+-register , on the third of navbar, showing register icon for user do not have account.
+-login,on the rigth of navbar,showing login icon for  user have account.
+#### body
+show matching game by starting the game by pressing the Start Game button.
 ## Reference
 เกมไพ่มรณะจ๊ะ - Resident Evil 7: DLC 21
 https://youtu.be/4-wLmsv23xs?t=99
