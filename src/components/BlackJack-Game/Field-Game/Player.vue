@@ -64,6 +64,7 @@ const use =(c)=>{
           <div class="item" v-show="popup">
             <div class="item-header">
               <div class="item-title">ITEM</div>
+               ( สามรถจั่วการ์ดที่เราต้องการได้เลย )
                 <button class="close-item" @click="popup=false">&times;</button>
               </div>
               <p class="msg" :style="{color:'red'}">{{textCard}}</p>

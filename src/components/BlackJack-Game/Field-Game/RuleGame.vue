@@ -1,6 +1,6 @@
 <script setup>import { ref } from 'vue';
 
-const RuleButton =ref(false)
+const RuleButton =ref(true)
 
 const closeRule = () => {
   RuleButton.value = false;
@@ -15,19 +15,20 @@ const closeRule = () => {
           <button class="close-rule" @click="closeRule">&times;</button>
         </div>
         <div class="rule-body">
+          <p>- การ์ดที่ใช้เล่นเป็นการ์ดจากสำรับเดียวกัน มีทั้งหมด 12 ใบ</p>
           <p
             style="color: black;"
           >- ผู้เล่นจะต้องนำค่าของการ์ดที่ได้มาบวกกันให้เท่ากับหรือใกล้เคียง 21 มากที่สุด</p>
           <p style="color: black;">
             - โดยจะสามารถเลือก
             <a style="color: #11856d;">Draw</a> เพื่อจั่วการ์ดเพิ่ม หรือ
-            <a style="color: #b51010;">Stay</a> เพื่อไม่จั่วการ์ด
+            <a style="color: #b51010;">Stay</a> เพื่อไม่จั่วการ์ด หรือ
+            <a style="color: #11856d;">Item</a> เพื่อจั่วการ์ดที่เราต้องการได้เลย
           </p>
           <p
             style="color: black;"
           >- หากผู้เล่นฝ่ายใดมีค่าเท่ากับหรือใกล้เคียง 21 มากที่สุด จะเป็นผู้ชนะ</p>
-          <p style="color: black;">- ในกรณีที่ฝ่ายใดมีค่ามากกว่า 21 จะหมดสิทธิ์ชนะในทันที</p>
-          <p style="color: black;">- แต่หากทั้งคู่มีค่ามากกว่า 21 จะถือว่าเสมอ</p>
+          <p style="color: black;">- หากทั้งคู่มีค่ามากกว่า 21 จะถือว่าเสมอ</p>
           <p style="color: black;">- ถ้า ชนะ จะได้ 1 คะแนน แต่ถ้า แพ้หรือเสมอ จะได้ 0 ใครได้ 2 คะแนนก่อนเป็นผู้ชนะ Game</p>
         </div>
       </div>

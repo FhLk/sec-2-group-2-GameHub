@@ -45,7 +45,6 @@ const isBotStop = ref();// when bot choose 'Stop' = true
 const isPlayerStop = ref();// when player choose 'Stop' = true
 const GameField = ref(true)
 const isPlay = ref(0);//when Start this web
-let red = ref('');// ux of bot
 let firstofBot = ref();// first card of bot (use 'ref()' because it to be calculator on html)
 let secondofBot;// second card of bot
 let firstofPlayer;//first card of player
