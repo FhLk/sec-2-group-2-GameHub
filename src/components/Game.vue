@@ -6,7 +6,6 @@ defineProps(
     linkTo: String,
   }
 );
-define
 </script>
  
 <template>
