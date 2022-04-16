@@ -21,30 +21,34 @@ const props = defineProps({
  
 <template>
 <div>
-    <p style="font-size: 50px; text-align: center;margin-top: 2%;margin-bottom: 5%;">Result</p>
+    <p style="font-size: 50px; text-align: center;margin-top: 2%;margin-bottom: 3%;">Result</p>
         <ul style="text-align: center;list-style-type: none; font-size: 25px;">
+        <div class="score-player">
           {{ player.name }}
           <li v-for="(result, index) in player.round" :key="index">
             Round {{ index + 1 }} : {{ result }}
             <span v-if="result == 'Win'">+1</span>
             <span v-else>+0</span>
           </li>
-          <br>
+          </div>
+          <div class="score-bot">
           {{ bot.name }}
           <li v-for="(result, index) in bot.round" :key="index">
             Round {{ index + 1 }} : {{ result }}
             <span v-if="result == 'Win'">+1</span>
             <span v-else>+0</span>
           </li>
-          <br>
-          Score Board
-          <li v-for="(result, index) in sum.player" :key="index">
-            {{player.name.charAt(0)}} | {{sum.player[index]}} : {{sum.bot[index]}} | {{bot.name.charAt(0)}}
-          </li>
+          </div>
         </ul>
 </div>
 
 </template>
- 
+
 <style scoped>
+.score-player{
+  float: left;
+}
+.score-bot{
+  float: right;
+}
 </style>

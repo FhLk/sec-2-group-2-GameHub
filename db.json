@@ -1,13 +1,6 @@
 {
   "profile": [
     {
-      "displayname": "FhLk",
-      "user": "FhLk",
-      "password": "abc",
-      "email": "aaa@hotmail.com",
-      "id": 1
-    },
-    {
       "displayname": "PP",
       "user": "paramat",
       "password": "abc123",
@@ -50,6 +43,17 @@
         "matching": 0
       },
       "id": 5
+    },
+    {
+      "displayname": "Wow",
+      "user": "FhLk",
+      "password": "abc",
+      "email": "aaa@hotmail.com",
+      "score": {
+        "blackjack": 1,
+        "matching": 0
+      },
+      "id": 6
     }
   ]
 }

@@ -74,9 +74,10 @@ function Start() {
   secondofPlayer = randomCard(card.value)
   cardOfplayer.value.push(secondofPlayer)
   card.value.splice(card.value.indexOf(secondofPlayer), 1)
-
-  itemOfPlayer.value= Item();
-  itemOfBot.value= Item();
+  if(round.value===1){
+    itemOfPlayer.value= Item();
+    itemOfBot.value= Item();
+  }
 }
 //Game play of player
 //when player clink Drawn
@@ -324,7 +325,6 @@ randomItem()
         <div class="winnerGame">THE WINNER IS {{ winGame(player.score, bot.score) }} !!!</div>
         <ShowResult :player="player" :bot="bot"
         :sum="{player:oldsumofplayer,bot:oldsumofbot}"/>
-        
         <ButtunFinalField @restartgame="restartGame"/>
       </div>
     </div>
@@ -359,6 +359,7 @@ randomItem()
   font-size: 50px;
   font-weight: 700;
   text-align: center;
+  width: 700px;
   padding-top: 3%;
   padding-bottom: 3%;
 }
@@ -368,7 +369,7 @@ randomItem()
 }
 .final-field {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;

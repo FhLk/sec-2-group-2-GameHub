@@ -41,7 +41,7 @@ const endGame = () => {
  
 <style scoped>
 .restartButton {
-  width: 120px;
+  width: 150px;
   height: 55px;
   font-size: 20px;
   font-weight: 700;
@@ -58,7 +58,7 @@ const endGame = () => {
   border: #033326 5px solid;
 }
 .endGame {
-  width: 120px;
+  width: 150px;
   height: 55px;
   font-size: 20px;
   font-weight: 700;
@@ -76,9 +76,10 @@ const endGame = () => {
 }
 
 .final-field-button {
-  margin-top: 2%;
+  margin-top: 30%;
   display: flex;
   justify-content: center;
+
 }
 
 </style>

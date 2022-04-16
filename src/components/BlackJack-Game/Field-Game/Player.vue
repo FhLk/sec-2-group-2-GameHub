@@ -75,7 +75,7 @@ const use =(c)=>{
               </div>
             </ul>
           </div>
-          <button @click="$emit('stay',sumOfplayer),isBet=false" class="button-choose-player-stay">STAY</button>
+          <button @click="$emit('stay',sumOfplayer)" class="button-choose-player-stay">STAY</button>
         </div>
         <p class="player-score">
           <a style="color: #EDE682;">{{ player.name }}</a>
