@@ -5,7 +5,7 @@
 4. 63130500070 Natasia Yusuwapan
 5. 63130500078 Paramat Pet-in
 
-# GameHub 	:video_game::spades::hearts::clubs::diamonds:
+# GameHub 	:video_game:
 **Created by  (ID:055,056,060,070,078)**
 ## Introduction 	:rocket:
 GameHub is a unified library for all our games (blackjack,matching game). It allows our to store  games from different platforms into one program to make it easier for our to manage our games and gamehub is built with vue3 and vite with optional basic strategy hints.
@@ -29,7 +29,7 @@ npm run backend
 ```
 ## Component :computer:
 
-## 1.FontGameHub
+## 1.FontGameHub 	:clipboard:
 #### Navbar
 -gamelogo , on the left of navbar, showing the game Logo that router to gamehub.
 
@@ -52,11 +52,11 @@ Game,show all game
 
 -Wizard Matching
 
-## 2.BlackJackGame
+## 2.BlackJackGame  :spades::hearts::clubs::diamonds:
 
 
-## 3.MatchingGame
-#### navbar
+## 3.MatchingGame :jigsaw::teddy_bear::jigsaw::teddy_bear:
+#### Navbar
 -gamelogo on the left of navbar, showing the game Logo that router to gamehub.
 
 -leaderboard , on the second of navbar, showing the 3 best  result score board.
@@ -65,7 +65,7 @@ Game,show all game
 
 -login,on the rigth of navbar,showing login icon for  user have account.
 
-#### body
+#### Body
 
 show matching game by starting the game by pressing the Start Game button.
 
