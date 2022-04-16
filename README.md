@@ -58,11 +58,17 @@ Game,show all game
 ## 3.MatchingGame
 #### navbar
 -gamelogo on the left of navbar, showing the game Logo that router to gamehub.
+
 -leaderboard , on the second of navbar, showing the 3 best  result score board.
+
 -register , on the third of navbar, showing register icon for user do not have account.
+
 -login,on the rigth of navbar,showing login icon for  user have account.
+
 #### body
+
 show matching game by starting the game by pressing the Start Game button.
+
 ## Reference
 เกมไพ่มรณะจ๊ะ - Resident Evil 7: DLC 21
 https://youtu.be/4-wLmsv23xs?t=99
