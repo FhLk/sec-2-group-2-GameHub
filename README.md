@@ -54,11 +54,17 @@ Game,show all game
 
 ## 2.BlackJackGame  :spades::hearts::clubs::diamonds:
 -ButtonHistory -> Show the history of the game
+
 -Player -> Show interface of player and processes game operation. (player)
+
 -Com -> Show interface of player and processes game operation. (Computer)
+
 -ButtonNextRound -> Restart the game, Find the winner and show name of winner.
+
 -Rule -> Show the rule of the game.
+
 -Button-Final-Feild -> Button restart and end the game, set all value to default value.
+
 
 ## 3.MatchingGame :jigsaw::teddy_bear::jigsaw::teddy_bear:
 #### Navbar
