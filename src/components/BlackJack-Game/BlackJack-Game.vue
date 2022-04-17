@@ -201,12 +201,12 @@ const getProfileAndIncreaseScore = async () => {
   await increaseScore();
 }
 const winGame = (scoreplayer, scorebot) => {
-  if (scoreplayer === 2) {
+  if (scoreplayer === 5) {
     GameField.value = false
     getProfileAndIncreaseScore();
     return player.name
   }
-  else if (scorebot === 2) {
+  else if (scorebot === 5) {
     GameField.value = false
     return bot.name
   }
