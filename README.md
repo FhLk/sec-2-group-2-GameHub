@@ -53,7 +53,12 @@ Game,show all game
 -Wizard Matching
 
 ## 2.BlackJackGame  :spades::hearts::clubs::diamonds:
-
+-ButtonHistory -> Show the history of the game
+-Player -> Show interface of player and processes game operation. (player)
+-Com -> Show interface of player and processes game operation. (Computer)
+-ButtonNextRound -> Restart the game, Find the winner and show name of winner.
+-Rule -> Show the rule of the game.
+-Button-Final-Feild -> Button restart and end the game, set all value to default value.
 
 ## 3.MatchingGame :jigsaw::teddy_bear::jigsaw::teddy_bear:
 #### Navbar
@@ -68,7 +73,3 @@ Game,show all game
 #### Body
 
 show matching game by starting the game by pressing the Start Game button.
-
-## Reference
-เกมไพ่มรณะจ๊ะ - Resident Evil 7: DLC 21
-https://youtu.be/4-wLmsv23xs?t=99
