@@ -1,7 +1,4 @@
-// 1. Define route components.
-// These can be imported from other files
 import {createRouter, createWebHashHistory} from 'vue-router'
-import AppHome from '../App.vue'
 import PickupGame from '../components/Front-Game-Hub/BasePickupGame.vue'
 import Register from '../components/Front-Game-Hub/Register.vue'
 import Login from '../components/Front-Game-Hub/Login.vue'
@@ -9,9 +6,7 @@ import Profile from '../components/Front-Game-Hub/Profile.vue'
 import MatchingGame from '../components/Maching-Game/MatchingGame.vue'
 import BlackJackGame from '../components/BlackJack-Game/BlackJack-Game.vue'
 import Leaderboard from '../components/Front-Game-Hub/Leaderboard.vue'
-// 2. Define some routes
-// Each route should map to a component.
-// We'll talk about nested routes later.
+import AreaGame from '../components/Area-Game/GamePlay.vue'
 const routes = [
   { path: '/', component: PickupGame },
   { path: '/register', component: Register },
@@ -19,7 +14,8 @@ const routes = [
   { path: '/profile', component: Profile },
   { path: '/matching',component: MatchingGame },
   { path: '/blackjack',component: BlackJackGame },
-  { path: '/leaderboard',component: Leaderboard }
+  { path: '/leaderboard',component: Leaderboard },
+  { path: '/area',component: AreaGame}
 ]
 
 // 3. Create the router instance and pass the `routes` option
